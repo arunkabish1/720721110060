@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Products</title>
+    <style>
+        /* Add your custom styles here */
+    </style>
+</head>
+<body>
+    <h1>Top Products in <%= categoryName %></h1>
+    <% if (products.length === 0) { %>
+        <p>No products found.</p>
+    <% } else { %>
+        <table>
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                    <th>Rating</th>
+                    <th>Discount</th>
+                    <th>Availability</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% products.forEach(product => { %>
+                    <tr>
+                        <td><%= product.productName %></td>
+                        <td>$<%= product.price %></td>
+                        <td><%= product.rating %></td>
+                        <td><%= product.discount %>%</td>
+                        <td><%= product.availability %></td>
+                        <td><a href="/categories/<%= categoryName %>/products/<%= product.id %>">Details</a></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    <% } %>
+</body>
+</html>
